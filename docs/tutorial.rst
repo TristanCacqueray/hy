@@ -342,6 +342,15 @@ The equivalent in Hy would be:
   (for [i (range 10)]
     (print (+ "'i' is now at " (str i))))
 
+Python's array indexes are implemented by the ``cut`` built-in:
+
+.. code-block:: clj
+
+  (cut [0 1 2 3 4] -3 -1)
+
+which is equivalent to::
+
+  [0, 1, 2, 3, 4][-3:-1]
 
 You can also import and make use of various Python libraries.  For
 example:
