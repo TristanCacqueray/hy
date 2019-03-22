@@ -933,6 +933,23 @@ Returns ``True`` if *x* is a symbol.
    => (symbol? '[a b c])
    False
 
+.. _expression?-fn:
+
+expression?
+-------
+
+Usage: ``(expression? e)``
+
+Returns ``True`` if *e* is an expression.
+
+.. code-block:: hy
+
+   => (expression? '(inc 41))
+   True
+
+   => (expression? '42)
+   False
+
 .. _zero?-fn:
 
 zero?

@@ -12,7 +12,7 @@
 (import operator)  ; shadow not available yet
 (import sys)
 (import [hy._compat [long-type]]) ; long for python2, int for python3
-(import [hy.models [HySymbol HyKeyword]])
+(import [hy.models [HySymbol HyKeyword HyExpression]])
 (import [hy.lex [tokenize mangle unmangle read read-str]])
 (import [hy.lex.exceptions [LexException PrematureEndOfInput]])
 (import [hy.compiler [HyASTCompiler calling-module hy-eval :as eval]])
@@ -206,6 +206,9 @@ Return series of accumulated sums (or other binary function results)."
 (defn symbol? [s]
   "Check if `s` is a symbol."
   (instance? HySymbol s))
+
+(defn expression? [e]
+  (instance? HyExpression e))
 
 (import [threading [Lock]])
 (setv _gensym_counter 1234)
@@ -451,10 +454,10 @@ Even objects with the __name__ magic will work."
 (setv EXPORTS
   '[*map accumulate butlast calling-module calling-module-name chain coll?
     combinations comp complement compress constantly count cycle dec distinct
-    disassemble drop drop-last drop-while empty? eval even? every? exec first
-    filter flatten float? fraction gensym group-by identity inc input instance?
-    integer integer? integer-char? interleave interpose islice iterable?
-    iterate iterator? juxt keyword keyword? last macroexpand
+    disassemble drop drop-last drop-while empty? eval even? every? exec
+    expression? first filter flatten float? fraction gensym group-by identity
+    inc input instance? integer integer? integer-char? interleave interpose
+    islice iterable? iterate iterator? juxt keyword keyword? last macroexpand
     macroexpand-1 mangle map merge-with multicombinations name neg? none? nth
     numeric? odd? partition permutations pos? product range read read-str
     remove repeat repeatedly rest reduce second some string string? symbol?
