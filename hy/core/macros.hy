@@ -119,7 +119,7 @@ The result of the first threaded form is inserted into the first position of
 the second form, the second result is inserted into the third form, and so on."
   (setv ret head)
   (for [node args]
-    (setv ret (if (isinstance node HyExpression)
+    (setv ret (if (expression? node)
                   `(~(first node) ~ret ~@(rest node))
                   `(~node ~ret))))
   ret)
@@ -129,7 +129,7 @@ the second form, the second result is inserted into the third form, and so on."
   "Perform possibly mutating `expressions` on `form`, returning resulting obj."
   (setv f (gensym))
   (defn build-form [expression]
-    (if (isinstance expression HyExpression)
+    (if (expression? expression)
       `(~(first expression) ~f ~@(rest expression))
       `(~expression ~f)))
   `(do
@@ -145,7 +145,7 @@ The result of the first threaded form is inserted into the last position of
 the second form, the second result is inserted into the third form, and so on."
   (setv ret head)
   (for [node args]
-    (setv ret (if (isinstance node HyExpression)
+    (setv ret (if (expression? node)
                   `(~@node ~ret)
                   `(~node ~ret))))
   ret)
