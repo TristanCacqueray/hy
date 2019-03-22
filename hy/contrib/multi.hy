@@ -77,7 +77,7 @@
   (setv arity-overloaded? (fn [bodies]
                             (if (isinstance (first bodies) HyString)
                                 (arity-overloaded? (rest bodies))
-                                (isinstance (first bodies) HyExpression))))
+                                (expression? (first bodies)))))
 
   (if (arity-overloaded? bodies)
     (do

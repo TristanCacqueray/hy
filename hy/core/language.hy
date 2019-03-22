@@ -207,6 +207,9 @@ Return series of accumulated sums (or other binary function results)."
   "Check if `s` is a symbol."
   (instance? HySymbol s))
 
+(defn expression? [e]
+  (instance? HyExpression e))
+
 (import [threading [Lock]])
 (setv _gensym_counter 1234)
 (setv _gensym_lock (Lock))
@@ -451,10 +454,10 @@ Even objects with the __name__ magic will work."
 (setv EXPORTS
   '[*map accumulate butlast calling-module calling-module-name chain coll?
     combinations comp complement compress constantly count cycle dec distinct
-    disassemble drop drop-last drop-while empty? eval even? every? exec first
-    filter flatten float? fraction gensym group-by identity inc input instance?
-    integer integer? integer-char? interleave interpose islice iterable?
-    iterate iterator? juxt keyword keyword? last macroexpand
+    disassemble drop drop-last drop-while empty? eval even? every? exec
+    expression? first filter flatten float? fraction gensym group-by identity
+    inc input instance? integer integer? integer-char? interleave interpose
+    islice iterable? iterate iterator? juxt keyword keyword? last macroexpand
     macroexpand-1 mangle map merge-with multicombinations name neg? none? nth
     numeric? odd? partition permutations pos? product range read read-str
     remove repeat repeatedly rest reduce second some string string? symbol?

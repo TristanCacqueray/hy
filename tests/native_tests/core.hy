@@ -267,6 +267,14 @@ result['y in globals'] = 'y' in globals()")
   (assert-true (symbol? 'im-symbol))
   (assert-false (symbol? (name 'im-symbol))))
 
+(defn test-expression? []
+  "NATIVE: testing the expression? function"
+  (assert-false (expression? "hello"))
+  (assert-false (expression? [1 2 3]))
+  (assert-false (expression? '[a b c]))
+  (assert-true (expression? '(im-expression))
+  (assert-false (expression? (name 'im-expression))))
+
 (defn test-gensym []
   "NATIVE: testing the gensym function"
   (import [hy.models [HySymbol]])
