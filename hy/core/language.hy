@@ -206,6 +206,9 @@ Return series of accumulated sums (or other binary function results)."
 (defn list? [x]
   (isinstance x list))
 
+(defn tuple? [x]
+  (isinstance x tuple))
+
 (defn symbol? [s]
   "Check if `s` is a symbol."
   (instance? HySymbol s))
